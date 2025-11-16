@@ -1,0 +1,46 @@
+# === IntelliJ IDEA ===
+.idea/
+*.iml
+out/
+*.ipr
+*.iws
+
+# === OS Files ===
+.DS_Store
+Thumbs.db
+
+# === Logs ===
+*.log
+logs/
+*.pid
+
+# === Gradle ===
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# === Java ===
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# === Node / Frontend ===
+node_modules/
+dist/
+coverage/
+
+# === Environment ===
+.env
+.env.local
+.env.*
+!env.example
+
+# === Other ===
+tmp/
+.cache/
+.vscode/
+*.swp
