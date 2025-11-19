@@ -4,9 +4,9 @@ services:
     container_name: account-service-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: account_service
-      POSTGRES_USER: postgres_dev
-      POSTGRES_PASSWORD: postgres_dev_p
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
       PGDATA: /var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
@@ -32,10 +32,10 @@ services:
       SPRING_PROFILES_ACTIVE: prod
 
       DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: account_service
-      DB_USERNAME: postgres_dev
-      DB_PASSWORD: postgres_dev_p
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_POOL_SIZE: 10
 
       LOG_LEVEL: INFO
