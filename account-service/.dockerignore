@@ -1,0 +1,36 @@
+# Build artifacts
+build/
+target/
+*.jar
+*.war
+*.class
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+README.md
+docs/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test
+src/test/
