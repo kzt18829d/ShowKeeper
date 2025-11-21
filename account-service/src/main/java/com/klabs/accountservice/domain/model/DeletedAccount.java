@@ -30,14 +30,7 @@ public class DeletedAccount {
 
     private LocalDateTime purgeAt;
 
-    /**
-     * Creates DeletedAccount from Account entity when account is marked as deleted.
-     * Serializes all account data to JSON for potential restoration within 60 days.
-     *
-     * @param account the account to be marked as deleted
-     * @return DeletedAccount with serialized account data
-     * @throws JsonProcessingException if JSON serialization fails
-     */
+
     public static DeletedAccount fromAccount(Account account) throws JsonProcessingException {
         LocalDateTime now = LocalDateTime.now();
         LocalDateTime purgeAt = now.plusDays(60);

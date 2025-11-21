@@ -6,9 +6,7 @@ import com.klabs.accountservice.domain.valueobject.Login;
 import com.klabs.accountservice.domain.valueobject.Password;
 import com.klabs.accountservice.shared.exception.InvalidCredentialsException;
 import com.klabs.accountservice.shared.exception.OAuthProviderAlreadyBoundException;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.UUID;
 @Getter
 public class Account {
 
-    private UUID uuid;
+    private final UUID uuid;
 
     private Login login;
 
@@ -28,7 +26,7 @@ public class Account {
 
     private AccountStatus accountStatus;
 
-    private LocalDateTime registerDate;
+    private final LocalDateTime registerDate;
 
     private LocalDateTime lastLogInDate;
 
