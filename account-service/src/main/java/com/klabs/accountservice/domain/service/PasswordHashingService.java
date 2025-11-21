@@ -7,5 +7,5 @@ public interface PasswordHashingService {
 
     String hash(String plainPassword);
 
-    boolean matches(Password plainPassword, Password hashedPassword);
+    boolean matches(String plainPassword, Password hashedPassword);
 }
