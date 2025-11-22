@@ -546,9 +546,11 @@ class AccountTest {
         // Act
         account.addOAuthProvider(provider);
 
-        // Assert - Note: Cannot verify list contents due to NullPointerException bug
-        // The implementation doesn't initialize oAuthProviders list in createNew()
-        assertThrows(NullPointerException.class, () -> account.getOAuthProviders());
+        // Assert
+        assertNotNull(account.getOAuthProviders());
+        assertEquals(1, account.getOAuthProviders().size());
+        assertEquals("GOOGLE", account.getOAuthProviders().getFirst().getProviderName());
+        assertEquals("googleUserId123", account.getOAuthProviders().getFirst().getProviderUserID());
     }
 
     @Test
