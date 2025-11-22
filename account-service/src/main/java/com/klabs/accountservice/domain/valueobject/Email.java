@@ -17,7 +17,7 @@ public class Email {
    }
 
    private void validate(String email) {
-       if (!(email != null && !email.isBlank() && email.matches("^[A-Za-z0-9]+@[A-Za-z0-9.-]+$") && email.length() <= 255))
+       if (!(email != null && !email.isBlank() && email.trim().matches("^[A-Za-z0-9]+@[A-Za-z0-9.-]+\\.[A-Za-z]+$") && email.length() <= 255))
            throw new IllegalArgumentException("Invalid email format");
    }
 
