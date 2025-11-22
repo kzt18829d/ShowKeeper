@@ -3,6 +3,7 @@ package com.klabs.accountservice.domain.valueobject;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Random;
 
 @Getter
@@ -18,7 +19,6 @@ public class VerificationCode {
     }
 
     public static VerificationCode generate() {
-
         return new VerificationCode(String.format("%06d", new Random().nextInt(999_999)), LocalDateTime.now().plusMinutes(10));
     }
 
@@ -33,6 +33,7 @@ public class VerificationCode {
     }
 
     public boolean matches(String code) {
+        Objects.requireNonNull(code);
         return this.code.equals(code);
     }
 
