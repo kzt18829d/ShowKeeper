@@ -15,7 +15,9 @@ public class Login {
     }
 
     private void validate(String login) {
-        if (!(login != null && !login.isBlank() && login.matches("^[A-Z-a-z0-9_]+$")))
+        if (login == null || login.isBlank())
+            throw new IllegalArgumentException("Invalid login format");
+        if (!login.trim().matches("^[A-Za-z0-9_]+$"))
             throw new IllegalArgumentException("Invalid login format");
     }
 
