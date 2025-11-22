@@ -9,6 +9,7 @@ import com.klabs.accountservice.shared.exception.OAuthProviderAlreadyBoundExcept
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class Account {
 
     private boolean emailVerified;
 
-    private List<OAuthProvider> oAuthProviders;
+    private final List<OAuthProvider> oAuthProviders;
 
     private boolean hasProviderType(OAuthProvider oAuthProvider) {
         return oAuthProviders.stream().anyMatch(p -> p.isSameProvider(oAuthProvider.getProviderName()));
@@ -53,6 +54,7 @@ public class Account {
         this.registerDate = registrationDate;
         this.emailVerified = emailVerified;
         this.lastLogInDate = null;
+        this.oAuthProviders = new ArrayList<>();
     }
 
     public static Account createNew(Login login, Email email, Password password) {
@@ -80,7 +82,7 @@ public class Account {
 
     public void updateLogin(Login login) {
         Objects.requireNonNull(login);
-        if (this.login.equals(login)) this.login = login;
+        if (!this.login.equals(login)) this.login = login;
     }
 
     public void updateEmail(Email email) {
@@ -98,7 +100,7 @@ public class Account {
 
         if (this.password == null)
             throw new IllegalStateException("Password not set");
-        if (!hashingService.matches(oldPlainPassword, newPassword))
+        if (!hashingService.matches(oldPlainPassword, this.password))
             throw new InvalidCredentialsException("Invalid old password");
         this.password = newPassword;
     }
@@ -131,9 +133,8 @@ public class Account {
         Objects.requireNonNull(provider);
 
         if (hasProviderType(provider))
-            throw new OAuthProviderAlreadyBoundException(String.format("PAuth provider '%s' is already bound to this account", provider.getProviderName()));
+            throw new OAuthProviderAlreadyBoundException(String.format("OAuth provider '%s' is already bound to this account", provider.getProviderName()));
         oAuthProviders.add(provider);
     }
-
 
 }
