@@ -24,4 +24,6 @@ public interface CachePort {
 
     void deleteSession(String sessionID, String accountUUID);
 
+    void saveValue(String key, String json, Duration ttl);
+
 }
