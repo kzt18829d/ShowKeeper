@@ -6,11 +6,11 @@ public enum AccountStatus {
     SUSPENDED,
     DELETED;
 
-    boolean canBeDeleted() {
+    public boolean canBeDeleted() {
         return this != DELETED;
     }
 
-    boolean isActive() {
+    public boolean isActive() {
         return this == ACTIVE;
     }
 }
