@@ -12,10 +12,10 @@ import com.klabs.accountservice.domain.service.PasswordHashingService;
 import com.klabs.accountservice.domain.valueobject.Email;
 import com.klabs.accountservice.domain.valueobject.Login;
 import com.klabs.accountservice.domain.valueobject.VerificationCode;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.util.Map;
