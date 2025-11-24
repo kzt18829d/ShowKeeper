@@ -1,5 +1,8 @@
 package com.klabs.accountservice.shared.exception;
 
+import com.klabs.accountservice.domain.valueobject.Email;
+import com.klabs.accountservice.domain.valueobject.Login;
+
 import java.util.UUID;
 
 public class AccountNotFoundException extends BusinessException {
@@ -10,6 +13,15 @@ public class AccountNotFoundException extends BusinessException {
     public AccountNotFoundException(UUID accountUUID) {
         super(String.format("Account with UUID %s not found", accountUUID));
     }
+
+    public AccountNotFoundException(Email email) {
+        super(String.format("Account with email %s not found", email.getValue()));
+    }
+
+    public AccountNotFoundException(Login login) {
+        super(String.format("Account with login %s not found", login.getValue()));
+    }
+
 
     public AccountNotFoundException(String message, Throwable cause) {
         super(message, cause);
