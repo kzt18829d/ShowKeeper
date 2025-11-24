@@ -10,6 +10,8 @@ public interface CachePort {
 
     Optional<String> getVerificationCode(String key);
 
+    Optional<Duration> getTTL(String key);
+
     void deleteVerificationCode(String key);
 
     void saveToken(String tokenID, String accountUUID, Duration ttl);
@@ -25,5 +27,9 @@ public interface CachePort {
     void deleteSession(String sessionID, String accountUUID);
 
     void saveValue(String key, String json, Duration ttl);
+
+    Optional<String> getValue(String key);
+
+    void deleteValue(String key);
 
 }
