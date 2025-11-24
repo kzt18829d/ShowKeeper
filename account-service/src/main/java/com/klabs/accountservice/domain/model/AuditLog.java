@@ -31,19 +31,22 @@ public class AuditLog {
 
     private LocalDateTime createdAt;
 
-    public static AuditLog create(UUID accountUuid, String action, String ipAddress, String userAgent, Map<String, Object> details) throws JsonProcessingException {
+    public static AuditLog create(UUID accountUuid, String action, String ipAddress, String userAgent, Map<String, Object> details) {
         if (accountUuid == null)
             throw new IllegalArgumentException("Account UUID can't be null");
         if (action == null || action.isBlank())
             throw  new IllegalArgumentException("Action can't be null or blank");
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            String json = objectMapper.writeValueAsString(details);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String json = objectMapper.writeValueAsString(details);
-
-        return new AuditLog(null, accountUuid, action, ipAddress, userAgent, json, LocalDateTime.now());
+            return new AuditLog(null, accountUuid, action, ipAddress, userAgent, json, LocalDateTime.now());
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public static AuditLog login(UUID accountUuid, String ipAddress, String userAgent) throws JsonProcessingException {
+    public static AuditLog login(UUID accountUuid, String ipAddress, String userAgent) {
         return create(accountUuid, "LOGIN", ipAddress, userAgent, null);
     }
 
