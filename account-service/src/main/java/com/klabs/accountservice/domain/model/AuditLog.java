@@ -50,6 +50,10 @@ public class AuditLog {
         return create(accountUuid, "LOGIN", ipAddress, userAgent, null);
     }
 
+    public static AuditLog logout(UUID accountUuid, String ipAddress, String userAgent) {
+        return create(accountUuid, "LOGOUT", ipAddress, userAgent, null);
+    }
+
     public static AuditLog passwordChanged(UUID accountUuid, String ipAddress, String userAgent) throws JsonProcessingException {
         return create(accountUuid, "PASSWORD_CHANGED", ipAddress, userAgent, null);
     }
