@@ -13,12 +13,11 @@ import com.klabs.accountservice.domain.model.Account;
 import com.klabs.accountservice.domain.repository.AccountRepository;
 import com.klabs.accountservice.domain.service.PasswordHashingService;
 import com.klabs.accountservice.domain.valueobject.*;
-import com.klabs.accountservice.shared.exception.EmailNotVerifiedException;
 import com.klabs.accountservice.shared.exception.InvalidVerificationCodeException;
 import com.klabs.accountservice.shared.exception.VerificationCodeExpiredException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
