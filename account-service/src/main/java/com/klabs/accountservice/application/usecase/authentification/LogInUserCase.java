@@ -86,7 +86,7 @@ public class LogInUserCase {
         validatePasswordAndAccount(account, password);
         TokenDTO tokenDTO = generateTokens(account);
 
-        String sessionID = UUID.randomUUID().toString();
+        String sessionID = tokenDTO.getRefreshToken();
         saveSessionAndAuditLog(account, ipAddress, userAgent, sessionID);
         return tokenDTO;
     }
